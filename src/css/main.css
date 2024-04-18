@@ -1,0 +1,160 @@
+@import 'init.css';
+
+body {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 1rem;
+
+  padding: min(0.5vw, 0.5vh);
+}
+
+/*
+  mobile first
+  sections are full width, stacked vertically
+*/
+.layout {
+  width: 99vw;
+  margin: 0 auto;
+}
+section {
+  margin-bottom: 6vw;
+  border-bottom: 2px dashed #333;
+}
+h1 {
+  font-size: max(1.5rem, 4vw);
+  margin-bottom: 2vw;
+}
+h2 {
+  font-size: max(0.75rem, 2vw);
+  font-weight: normal;
+  margin-bottom: 1vw;
+}
+div.day {
+  text-align: right;
+  width: 96%;
+  margin: 0 auto;
+  margin-bottom: 2vw;
+}
+p {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% / 8);
+  text-align: center;
+}
+p:nth-child(even) {
+  background-color: var(--alternate-background-color);
+}
+p span {
+  display: block;
+}
+.hour {
+  color: var(--hour-color);
+}
+img {
+  width: 45%;
+}
+.arrow {
+  display: inline-block;
+  height: 0;
+  width: 45%;
+  padding-bottom: 45%;
+}
+.temperature.plus {
+  color: var(--plus-color);
+}
+.temperature.minus {
+  color: var(--minus-color);
+}
+.wind {
+  color: var(--wind-color);
+}
+.smol {
+  display: inline;
+  font-size: 0.7rem;
+}
+
+/*
+  enhanced / tablet / desktop
+*/
+@media (min-width: 800px) {
+  .layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  section {
+    border: 0;
+    margin-bottom: 0;
+    aspect-ratio: 4/3;
+    box-sizing: border-box;
+    padding-left: 1vw;
+  }
+  @supports not (aspect-ratio: 1) {
+    section {
+      height: calc(99vw/2/4*3);
+    }
+  }
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  section:nth-child(odd) {
+    border-right: 1px dashed var(--border-color);
+  }
+  section:nth-child(-n + 2) {
+    border-bottom: 1px dashed var(--border-color);
+  }
+}
+
+/*
+  max width
+*/
+@media (min-width: 1100px) {
+  .layout {
+    width: 1100px;
+  }
+  h1 {
+    font-size: 44px;
+  }
+  h2 {
+    font-size: 22px;
+    margin-bottom: 11px;
+  }
+  div.day {
+    margin-bottom: 26px;
+  }
+}
+
+/*
+  min width
+*/
+@media (max-width: 330px) {
+  .layout {
+    width: 330px;
+  }
+}
+
+/*
+  div.layout
+    section
+      h1
+      h2
+      div.day
+        p
+          span.hour
+          img.icon
+          span.arrow
+          span.wind
+          span.temperature.[plus|minus]
+        p
+        p
+        p
+      h2
+      div.day
+        p
+        p
+        p
+*/

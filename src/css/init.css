@@ -1,0 +1,21 @@
+* { margin: 0; padding: 0; }
+ul { list-style: none; }
+html, body { box-sizing: border-box; }
+
+:root {
+  --background-color: #222222;
+  --alternate-background-color: #1a1a1a;
+  --border-color: #444;
+  --text-color: #eee0cc;
+  --hour-color: #888;
+  --wind-color: lightgreen;
+  --plus-color: #ff6666;
+  --minus-color: lightblue;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #222;
+    --text-color: #eee0cc;
+  }
+}
